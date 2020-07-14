@@ -6,6 +6,9 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     // TODO: implement build
     return MaterialApp(
-        theme: ThemeData(brightness: Brightness.dark), home: MainPage());
+        theme: ThemeData(
+            brightness: Brightness.dark,
+            scaffoldBackgroundColor: Color(0xff383838)),
+        home: MainPage());
   }
 }
