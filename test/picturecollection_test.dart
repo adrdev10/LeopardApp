@@ -20,5 +20,10 @@ void main() {
           [Picture("api/url/image3", "2"), Picture("api/url/image4", "3")]);
       expect(pictureCollection.length, 4);
     });
+
+    test("Check if two collections are the same", () {
+      PictureCollection pictureCollection2 = pictureCollection;
+      expect(pictureCollection2.isCollectionEqual(pictureCollection), true);
+    });
   });
 }

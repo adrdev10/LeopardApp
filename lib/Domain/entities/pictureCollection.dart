@@ -27,4 +27,15 @@ class PictureCollection {
   pushPictures(List<Picture> pictures) {
     _pictures = [..._pictures, ...pictures];
   }
+
+  //check if two collections the same
+  bool isCollectionEqual(collection) {
+    if (collection is PictureCollection &&
+        collection.length == _pictures.length) {
+      for (int i = 0; i < collection.length; i++) {
+        if (collection._pictures[i] != _pictures[i]) return false;
+      }
+    }
+    return true;
+  }
 }
