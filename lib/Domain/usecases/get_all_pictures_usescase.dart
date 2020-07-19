@@ -5,12 +5,17 @@ import 'package:complex_ui_app_1/Domain/repository/picture_collection_repository
 import 'package:complex_ui_app_1/Domain/entities/pictureCollection.dart';
 import 'package:flutter_clean_architecture/flutter_clean_architecture.dart';
 
-class GetAllPicturesUseCase extends UseCase<PictureCollection, void> {
+class GetAllPicturesUseCase
+    extends UseCase<GetAllPicturesUseCaseResponse, void> {
   PictureCollectionRepository pictureRepo;
+
+  GetAllPicturesUseCase(this.pictureRepo);
   @override
-  Future<Stream<PictureCollection>> buildUseCaseStream(void params) async {
+  Future<Stream<GetAllPicturesUseCaseResponse>> buildUseCaseStream(
+      void params) async {
     // TODO: implement buildUseCaseStream
-    final StreamController controller = StreamController<PictureCollection>();
+    final StreamController controller =
+        StreamController<GetAllPicturesUseCaseResponse>();
     try {
       var pictures = await pictureRepo.getAllPictures();
       controller.add(pictures);
@@ -21,4 +26,9 @@ class GetAllPicturesUseCase extends UseCase<PictureCollection, void> {
     }
     return controller.stream;
   }
+}
+
+class GetAllPicturesUseCaseResponse {
+  final PictureCollection pictureCollection;
+  GetAllPicturesUseCaseResponse(this.pictureCollection);
 }
